@@ -42,4 +42,15 @@ public class CardsController {
                     .body(new ResponseDto(CardsConstants.STATUS_417, CardsConstants.MESSAGE_417_UPDATE));
         }
     }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<ResponseDto> deleteCard(@RequestParam String mobileNumber){
+        if(iCardsService.deleteCard(mobileNumber)){
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(new ResponseDto(CardsConstants.STATUS_200, CardsConstants.MESSAGE_200));
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(new ResponseDto(CardsConstants.STATUS_417, CardsConstants.MESSAGE_417_DELETE));
+        }
+    }
 }
