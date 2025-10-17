@@ -10,8 +10,9 @@
   <packaging>pom</packaging>
 
   <modules>
-    <module>accounts</module>
-    <module>cards</module>
+      <module>accounts</module>
+      <module>cards</module>
+      <module>loans</module>
   </modules>
 
   <!-- (you can also include shared dependencyManagement, pluginManagement, etc.) -->
