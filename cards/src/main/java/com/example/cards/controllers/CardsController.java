@@ -5,6 +5,7 @@ import com.example.cards.dto.CardsDto;
 import com.example.cards.dto.ResponseDto;
 import com.example.cards.service.ICardsService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -22,7 +23,9 @@ public class CardsController {
     private ICardsService iCardsService;
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDto> createNewCard(@Valid @RequestParam String mobileNumber){
+    public ResponseEntity<ResponseDto> createNewCard(@Valid @RequestParam
+                                                         @NotEmpty
+                                                         String mobileNumber){
         iCardsService.createCard(mobileNumber);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(new ResponseDto(CardsConstants.STATUS_201, CardsConstants.MESSAGE_201));

@@ -39,8 +39,8 @@ public class CardsServiceImpl implements ICardsService {
         newCard.setAmountUsed(0);
         newCard.setAvailableAmount(CardsConstants.NEW_CARD_LIMIT);
 
-        newCard.setCreatedAt(LocalDateTime.now());
-        newCard.setCreatedBy("Annonymous");
+//        newCard.setCreatedAt(LocalDateTime.now());
+//        newCard.setCreatedBy("Annonymous");
 
         return newCard;
     }
