@@ -59,4 +59,12 @@ public class LoansServiceImpl implements ILoansService {
         loansRepository.save(loans);
         return true;
     }
+
+    @Override
+    public boolean deleteLoan(String mobileNumber){
+        Loans loans = loansRepository.findByMobileNumber(mobileNumber)
+                .orElseThrow(() -> new ResourceNotFoundException("Loan", "Mobile Number", mobileNumber));
+        loansRepository.delete(loans);
+        return true;
+    }
 }
