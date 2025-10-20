@@ -30,4 +30,13 @@ public class LoansController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(iLoansService.fetchLoan(mobileNumber));
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<ResponseDto> updateLoan(@RequestBody LoansDto loansDto){
+        if(iLoansService.updateLoan(loansDto)){
+            return new ResponseEntity<>(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_UPDATE), HttpStatus.EXPECTATION_FAILED);
+        }
+    }
 }
