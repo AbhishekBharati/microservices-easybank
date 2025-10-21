@@ -39,8 +39,8 @@ public class LoansServiceImpl implements ILoansService {
         loans.setTotalLoan(LoansConstants.NEW_LOAN_LIMIT);
         loans.setAmountPaid(0);
         loans.setOutstandingAmount(LoansConstants.NEW_LOAN_LIMIT);
-        loans.setCreatedAt(LocalDateTime.now());
-        loans.setCreatedBy("User111");
+//        loans.setCreatedAt(LocalDateTime.now());
+//        loans.setCreatedBy("User111");
         return loans;
     }
 
