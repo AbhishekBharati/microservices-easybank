@@ -11,6 +11,7 @@
     <groupId>com.example</groupId>
     <artifactId>accounts</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <name>accounts</name>
     <description>Demo project for Spring Boot</description>
     <url/>
@@ -104,6 +105,16 @@
                     </excludes>
                 </configuration>
             </plugin>
+<plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.4.6</version>
+        <configuration>
+          <to>
+            <image>abhishekbharati/cards:v1</image>
+          </to>
+        </configuration>
+      </plugin>
         </plugins>
     </build>
 
