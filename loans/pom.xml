@@ -97,7 +97,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
-                        <name>abhishekbharat/loans:v1</name>
+                        <name>abhishekbharati/loans:v1</name>
                     </image>
                     <excludes>
                         <exclude>
