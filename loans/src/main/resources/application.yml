@@ -14,3 +14,12 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+
+loans:
+  message: "Welcome to EazyBank loans related local API's"
+  contactDetails:
+    name: "Abhishek"
+    email: "abhi@gmail.com"
+  onCallSupport:
+    - 85115
+    - 90900
