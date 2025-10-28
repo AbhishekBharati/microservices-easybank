@@ -1,12 +1,14 @@
 package com.example.cards.controllers;
 
 import com.example.cards.constants.CardsConstants;
+import com.example.cards.dto.CardsContactInfoDto;
 import com.example.cards.dto.CardsDto;
 import com.example.cards.dto.ResponseDto;
 import com.example.cards.service.ICardsService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,9 @@ import org.springframework.web.bind.annotation.*;
 public class CardsController {
 
     private ICardsService iCardsService;
+
+    @Autowired
+    private CardsContactInfoDto cardsContactInfoDto;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createNewCard(@Valid @RequestParam
@@ -58,5 +63,11 @@ public class CardsController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(new ResponseDto(CardsConstants.STATUS_417, CardsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @GetMapping("/get-contact")
+    public ResponseEntity<CardsContactInfoDto> getContactDetails(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(cardsContactInfoDto);
     }
 }

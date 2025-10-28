@@ -15,3 +15,12 @@ spring:
       ddl-auto: update
     show-sql: true
 
+cards:
+  message: "Welcome to EazyBank cards related local API's"
+  contactDetails:
+    name: "Abhishek"
+    email: "abhi@gmail.com"
+  onCallSupport:
+    - 898989
+    - 929292
+
