@@ -1,0 +1,13 @@
+spring:
+  config:
+    activate:
+      on-profile: "prod"
+
+cards:
+  messages: "Welcome to EazyBank cards related Prod API's"
+  contactDetails:
+    name: "Darshan - Product Owner"
+    email: "darsh@gmail.com"
+  onCallSupport:
+    - 9090
+    - 5454
