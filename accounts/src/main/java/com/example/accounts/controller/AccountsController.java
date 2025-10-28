@@ -6,7 +6,10 @@ import com.example.accounts.dto.ResponseDTO;
 import com.example.accounts.service.IAccountsService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +31,9 @@ public class AccountsController {
 
     @Value("${build.version}")
     private String buildVersion;
+
+    @Autowired
+    private Environment environment;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createAccount(@Valid @RequestBody CustomerDTO customerDTO){
@@ -74,5 +80,11 @@ public class AccountsController {
     public ResponseEntity<String> getBuildInfo(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(buildVersion);
+    }
+
+    @GetMapping("/java-version")
+    public ResponseEntity<String> getJavaVersion(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(environment.getProperty("JAVA_HOME"));
     }
 }
