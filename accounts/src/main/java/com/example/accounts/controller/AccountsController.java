@@ -1,6 +1,7 @@
 package com.example.accounts.controller;
 
 import com.example.accounts.constants.AccountsConstants;
+import com.example.accounts.dto.AccountsContactInfoDto;
 import com.example.accounts.dto.CustomerDTO;
 import com.example.accounts.dto.ResponseDTO;
 import com.example.accounts.service.IAccountsService;
@@ -34,6 +35,9 @@ public class AccountsController {
 
     @Autowired
     private Environment environment;
+
+    @Autowired
+    private AccountsContactInfoDto accountsContactInfoDto;
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> createAccount(@Valid @RequestBody CustomerDTO customerDTO){
@@ -86,5 +90,11 @@ public class AccountsController {
     public ResponseEntity<String> getJavaVersion(){
         return ResponseEntity.status(HttpStatus.OK)
                 .body(environment.getProperty("JAVA_HOME"));
+    }
+
+    @GetMapping("/get-contact")
+    public ResponseEntity<AccountsContactInfoDto> getContact(){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(accountsContactInfoDto);
     }
 }
