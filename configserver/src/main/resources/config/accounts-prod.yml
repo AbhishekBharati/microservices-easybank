@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+accounts:
+  message: "Welcome to EazyBank accounts related prod APIs"
+  contactDetails:
+    name: "Darshan - Product Owner"
+    email: "darshan@gmail.com"
+  onCallSupport:
+    - (453) 555-1234
+    - (256) 523-1345

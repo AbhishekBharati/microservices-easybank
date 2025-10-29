@@ -1,0 +1,11 @@
+build:
+  version: "1.0"
+
+loans:
+  message: "Welcome to Eazybank Loans related prod API's"
+  contactDetails:
+    name: "Darshan Product Owner"
+    email: "darsh@gmail.com"
+  onCallSupport:
+    - 9090
+    - 5454

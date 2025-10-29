@@ -1,0 +1,11 @@
+build:
+  version: "2.0"
+
+loans:
+  message: "Welcome to Eazybank loans related QA Api's"
+  contactDetails: 
+    name: "Anshu -QA Lead"
+    email: "anshu@gmail.com"
+  onCallSupport:
+    - 6363
+    - 4848
