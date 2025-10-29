@@ -2,13 +2,19 @@ spring:
   application:
     name: "configserver"
   profiles:
-    active: native
+    # active: native --> We use native when we want to get config from local system.
+    active: git
   cloud:
     config:
       server:
         native:
 #          search-locations: "classpath:/config"
-          search-locations: "file:///home/abhishek/Documents/config"
-
+          # search-locations: "file:///home/abhishek/Documents/config"
+        git:
+          uri: "https://github.com/AbhishekBharati/easybank-config.git"
+          default-label: master
+          timeout: 5
+          clone-on-start: true
+          force-pull: true
 server:
   port: 8071
