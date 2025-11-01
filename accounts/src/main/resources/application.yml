@@ -7,24 +7,51 @@ spring:
   profiles:
     active: "prod"
   datasource:
-    url: jdbc:mysql://localhost:3306/accountsdb?allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: root
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ''
+  h2:
+    console:
+      enabled: true
   jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
     show-sql: true
-  sql:
-    init:
-      mode: always
   config:
     import: "optional:configserver:http://localhost:8071/"
-  rabbitmq:
-    host: "localhost"
-    port: 5672
-    username: "guest"
-    password: "guest"
 
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+  # Also Did the for Eureka server
+  endpoint:
+    shutdown:
+      enabled: true
+  # Enabling env info related information from the actuator
+  info:
+    env:
+      enabled: true
+
+endpoints:
+  shoutdown:
+    enabled: true
+
+eureka:
+  instance:
+    preferIpAddress: true
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8070/eureka/
+
+# Same Info will be shown in Eureka Dashboard
+info:
+  app:
+    name: "accounts"
+    description: "Eazy Bank Accounts Applications"
+    version: "1.0.0"
