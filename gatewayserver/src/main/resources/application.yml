@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: "gatewayserver"
+  config:
+    import: "optional:configserver:http://localhost:8071/"
+  # To get the microservices information from ServiceDiscovery and use it to forward the traffic
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lowerCaseServiceId: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  # Enabling env info related information from the actuator
+  info:
+    env:
+      enabled: true
+
+# Same Info will be shown in Eureka Dashboard
+info:
+  app:
+    name: "gatewayserver"
+    description: "Eazy Bank Gateway Server Applications"
+    version: "1.0.0"
+
