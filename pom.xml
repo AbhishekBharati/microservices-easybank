@@ -15,6 +15,7 @@
       <module>loans</module>
       <module>configserver</module>
       <module>eurekaServer</module>
+      <module>gatewayserver</module>
   </modules>
 
   <!-- (you can also include shared dependencyManagement, pluginManagement, etc.) -->
