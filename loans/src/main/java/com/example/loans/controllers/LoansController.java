@@ -6,6 +6,8 @@ import com.example.loans.dto.LoansDto;
 import com.example.loans.dto.ResponseDto;
 import com.example.loans.service.ILoansService;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,6 +22,8 @@ import java.awt.*;
 public class LoansController {
     private ILoansService iLoansService;
 
+    private static final Logger logger = LoggerFactory.getLogger(LoansConstants.class);
+
     @Autowired
     private LoansContactInfoDto loansContactInfoDto;
 
@@ -31,7 +35,9 @@ public class LoansController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<LoansDto> fetchLoan(@RequestParam String mobileNumber){
+    public ResponseEntity<LoansDto> fetchLoan( @RequestHeader("eazybank-correlation-id") String correlationId,
+            @RequestParam String mobileNumber){
+        logger.debug("eazyBank-correlation-id found: {}", correlationId);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(iLoansService.fetchLoan(mobileNumber));
     }
