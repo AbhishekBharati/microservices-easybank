@@ -8,6 +8,8 @@ import com.example.cards.service.ICardsService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,6 +26,8 @@ public class CardsController {
 
     private ICardsService iCardsService;
 
+    private static final Logger logger = LoggerFactory.getLogger(CardsController.class);
+
     @Autowired
     private CardsContactInfoDto cardsContactInfoDto;
 
@@ -37,7 +41,9 @@ public class CardsController {
     }
 
     @GetMapping("/fetch")
-    public ResponseEntity<CardsDto> fetchCard(@RequestParam String mobileNumber){
+    public ResponseEntity<CardsDto> fetchCard(@RequestHeader("eazybank-correlation-id") String correlationId,
+            @RequestParam String mobileNumber){
+        logger.debug("eazyBank-correlation-id Found: {}", correlationId);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(iCardsService.fetchCard(mobileNumber));
     }
