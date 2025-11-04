@@ -27,17 +27,25 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   # Also Did the for Eureka server
   endpoint:
     shutdown:
       enabled: true
+    health:
+      probes:
+        enabled: true
   # Enabling env info related information from the actuator
   info:
     env:
       enabled: true
 
 endpoints:
-  shoutdown:
+  shutdown:
     enabled: true
 
 eureka:
@@ -55,3 +63,9 @@ info:
     name: "accounts"
     description: "Eazy Bank Accounts Applications"
     version: "1.0.0"
+
+logging:
+  level:
+    com:
+      example:
+        accounts: DEBUG
