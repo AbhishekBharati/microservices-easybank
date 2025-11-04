@@ -10,7 +10,8 @@ spring:
         webflux:
           discovery:
             locator:
-              enabled: true
+              # Will only show us routes configured by us and not default route.
+              enabled: false
               lowerCaseServiceId: true
 
 management:
@@ -33,3 +34,8 @@ info:
     description: "Eazy Bank Gateway Server Applications"
     version: "1.0.0"
 
+logging:
+  level:
+    com:
+      example:
+        gatewayserver: DEBUG
