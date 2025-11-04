@@ -29,10 +29,18 @@ management:
     web:
       exposure:
         include: "*"
+  health:
+    readiness-state:
+      enabled: true
+    liveness-state:
+      enabled: true
   # This configurations are for Eureka
   endpoint:
     shutdown:
       enabled: true
+    health:
+      probes:
+        enabled: true
   info:
     env:
       enabled: true
@@ -56,3 +64,9 @@ info:
     name: "loans"
     description: "EasyBank Loans Applications"
     version: "1.0.0"
+    
+logging:
+  level:
+    com:
+      example:
+        loans: DEBUG
